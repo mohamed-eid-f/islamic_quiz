@@ -3,6 +3,7 @@ import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:islamic_quiz/app_localizations.dart";
+import "package:islamic_quiz/features/end/presentation/end_view.dart";
 import "package:islamic_quiz/features/quiz/data/model/question_model.dart";
 // import "package:islamic_quiz/features/quiz/presentation/views/test_view.dart";
 import "package:islamic_quiz/features/quiz/presentation/views/quiz_view.dart";

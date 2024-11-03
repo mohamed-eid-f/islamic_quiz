@@ -17,7 +17,6 @@ class QuizView extends ConsumerWidget {
     int index = ref.watch(quizIndexProvider);
     AsyncValue<QuestionModel> question = ref.watch(questionsProvider);
     return Scaffold(
-      backgroundColor: AppColors.primary,
       body: question.when(
         data: (data) => _buildQuiz(data, index),
         error: (e, st) {
@@ -30,6 +29,7 @@ class QuizView extends ConsumerWidget {
           child: CircularProgressIndicator(),
         ),
       ),
+      // TODO: for testing only, it should be removed in production
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           ref.read(quizIndexProvider.notifier).nextQuestion();
@@ -46,6 +46,7 @@ class QuizView extends ConsumerWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            // TODO: implement timer
             const Timer(time: "03.02"),
             const SizedBox(height: 32),
             Progress(questionNo: question!.level),

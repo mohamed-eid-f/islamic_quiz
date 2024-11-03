@@ -1,6 +1,8 @@
 import "dart:convert";
 
+import "package:flutter/material.dart";
 import "package:flutter/services.dart";
+import "package:islamic_quiz/core/colors/app_colors.dart";
 import "package:islamic_quiz/features/quiz/data/model/question_model.dart";
 import "package:islamic_quiz/features/quiz/presentation/view_model/quiz_provider.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
@@ -26,10 +28,17 @@ class Questions extends _$Questions {
 
     questionModels.shuffle();
 
+    // get question according to levelProvider counter
     QuestionModel question =
-        // questionModels.firstWhere((q) => q.level == 1);
         questionModels.firstWhere((q) => q.level == levelProvider);
-    print(question);
+    debugPrint(question.toString());
     return question;
+  }
+
+  bool checkAnswer(int answer) {
+    if (state.value!.answerIndex == answer) {
+      return true;
+    }
+    return false;
   }
 }
