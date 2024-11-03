@@ -4,9 +4,11 @@ import "../colors/app_colors.dart";
 import "../consts/consts.dart";
 
 var appThemeData = ThemeData(
-  scaffoldBackgroundColor: Colors.white,
+  scaffoldBackgroundColor: AppColors.primary,
+  //       backgroundColor: AppColors.primary,
+
   brightness: Brightness.light,
-  fontFamily: 'Inter',
+  fontFamily: "Inter",
   cardColor: const Color(0xFFedecf2),
   primaryColor: AppColors.primary,
   appBarTheme: const AppBarTheme(

@@ -2,7 +2,7 @@ import "package:riverpod_annotation/riverpod_annotation.dart";
 
 part "quiz_provider.g.dart";
 
-@Riverpod(keepAlive: true)
+@Riverpod(keepAlive: false)
 class QuizIndex extends _$QuizIndex {
   @override
   int build() {

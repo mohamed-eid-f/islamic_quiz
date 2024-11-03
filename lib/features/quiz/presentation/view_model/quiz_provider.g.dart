@@ -6,11 +6,11 @@ part of 'quiz_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$quizIndexHash() => r'9d77ad5632fdc5b8f654755ee24031316b06dff0';
+String _$quizIndexHash() => r'fec8ff069426eb2d18cf228573eb2312e62d8659';
 
 /// See also [QuizIndex].
 @ProviderFor(QuizIndex)
-final quizIndexProvider = NotifierProvider<QuizIndex, int>.internal(
+final quizIndexProvider = AutoDisposeNotifierProvider<QuizIndex, int>.internal(
   QuizIndex.new,
   name: r'quizIndexProvider',
   debugGetCreateSourceHash:
@@ -19,6 +19,6 @@ final quizIndexProvider = NotifierProvider<QuizIndex, int>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef _$QuizIndex = Notifier<int>;
+typedef _$QuizIndex = AutoDisposeNotifier<int>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
