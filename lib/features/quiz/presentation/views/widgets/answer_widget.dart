@@ -1,8 +1,8 @@
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:islamic_quiz/core/colors/app_colors.dart";
 import "package:islamic_quiz/features/end/presentation/end_view.dart";
-import "package:islamic_quiz/features/quiz/data/model/question_model.dart";
 import "package:islamic_quiz/features/quiz/presentation/view_model/answer_provider.dart";
 import "package:islamic_quiz/features/quiz/presentation/view_model/question_provider.dart";
 import "package:islamic_quiz/features/quiz/presentation/view_model/quiz_provider.dart";
@@ -23,15 +23,15 @@ class AnswerWidget extends ConsumerWidget {
 
     return InkWell(
       onTap: () async {
-        // get the question answer
         // check the answer and
         bool isCorrect =
             ref.read(questionsProvider.notifier).checkAnswer(index);
         if (isCorrect) {
           ref.read(answerProvider(index).notifier).showCorrectAnswer();
-          // wait for 2 seconds
-          await Future.delayed(const Duration(seconds: 2));
-          ref.read(quizIndexProvider.notifier).nextQuestion();
+          // wait for 2 seconds then go to the next question
+          await Future.delayed(const Duration(seconds: 2)).then((_) {
+            ref.read(quizIndexProvider.notifier).nextQuestion();
+          });
           // todo: update the score
         } else {
           // todo: show the correct answer

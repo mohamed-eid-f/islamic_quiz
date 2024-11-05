@@ -1,8 +1,11 @@
 import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:islamic_quiz/core/colors/app_colors.dart";
+import "package:islamic_quiz/features/timer/presentation/view_model/timer_provider.dart";
+import "package:islamic_quiz/features/timer/presentation/views/widgets/timer_value.dart";
 
-class Timer extends StatelessWidget {
-  const Timer({
+class TimerWidget extends ConsumerWidget {
+  const TimerWidget({
     super.key,
     required this.time,
   });
@@ -10,7 +13,7 @@ class Timer extends StatelessWidget {
   final String time;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
         decoration: BoxDecoration(
           color: AppColors.timerBackground,
@@ -30,13 +33,8 @@ class Timer extends StatelessWidget {
         ),
         height: 48,
         width: 96,
-        child: Center(
-          child: Text(
-            time,
-            style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                  color: AppColors.fontColor,
-                ),
-          ),
+        child: const Center(
+          child: TimerValue(),
         ));
   }
 }
