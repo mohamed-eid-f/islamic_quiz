@@ -3,6 +3,8 @@ import "dart:developer";
 
 import "package:flutter/material.dart";
 import "package:islamic_quiz/features/end/presentation/end_view.dart";
+import "package:islamic_quiz/features/end/presentation/view_model/end_provider.dart";
+import "package:islamic_quiz/features/score/presentation/model_view/score_provider/score_provider.dart";
 import "package:islamic_quiz/features/timer/presentation/view_model/ticker.dart";
 import "package:islamic_quiz/features/timer/presentation/view_model/timer_state.dart";
 import "package:islamic_quiz/main.dart";
@@ -19,7 +21,7 @@ class Timer extends _$Timer {
   @override
   Stream<TimerState> build() {
     ref.onDispose(() {
-      print("Timer disposed");
+      // print("Timer disposed");
       _tickerSubscription?.cancel();
     });
     return Stream.value(TimerInitial(_duration));
@@ -37,10 +39,11 @@ class Timer extends _$Timer {
         state = const AsyncData(TimerFinished());
         // end game
         Future.delayed(const Duration(seconds: 2), () {
-          log("Time Finished");
-          navigatorKey.currentState!.pushReplacement(MaterialPageRoute(
-            builder: (context) => const EndView(),
-          ));
+          int score = ref.read(scoreProvider);
+          endGame(score);
+          // navigatorKey.currentState!.pushReplacement(MaterialPageRoute(
+          //   builder: (context) => const EndView(),
+          // ));
         });
       }
     });

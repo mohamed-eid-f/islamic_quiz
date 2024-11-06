@@ -1,17 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:islamic_quiz/core/colors/app_colors.dart';
+import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:islamic_quiz/core/colors/app_colors.dart";
+import "package:islamic_quiz/features/quiz/data/model/question_model.dart";
+import "package:islamic_quiz/features/quiz/presentation/view_model/question_provider.dart";
 
-class Progress extends StatelessWidget {
+class Progress extends ConsumerWidget {
   const Progress({
     super.key,
-    required this.questionNo,
   });
-  final int questionNo;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     const double radius = 6;
     const double allQuestions = 15;
+    AsyncValue<QuestionModel> question = ref.watch(questionsProvider);
+    int questionNo = question.asData?.value.level ?? 0;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

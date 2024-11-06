@@ -1,10 +1,29 @@
 import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:islamic_quiz/core/colors/app_colors.dart";
 import "package:islamic_quiz/features/quiz/data/model/question_model.dart";
+import "package:islamic_quiz/features/quiz/presentation/view_model/question_provider.dart";
 import "package:islamic_quiz/features/quiz/presentation/views/widgets/answer_widget.dart";
+import "package:islamic_quiz/features/timer/presentation/view_model/timer_provider.dart";
 
-class QuestionWidget extends StatelessWidget {
+class QuestionWidget extends ConsumerWidget {
   const QuestionWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    AsyncValue<QuestionModel> question = ref.watch(questionsProvider);
+    ref.invalidate(timerProvider);
+    return question.maybeWhen(
+      data: (data) => BuildQuestion(question: data),
+      orElse: () => const Center(child: CircularProgressIndicator()),
+    );
+  }
+}
+
+class BuildQuestion extends ConsumerWidget {
+  const BuildQuestion({
     super.key,
     required this.question,
   });
@@ -12,9 +31,14 @@ class QuestionWidget extends StatelessWidget {
   final QuestionModel question;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    Future.delayed(Duration.zero, () {
+      ref.read(timerProvider.notifier).startTimer();
+    });
+
     return Container(
       height: 520,
+      margin: const EdgeInsets.all(16),
       width: double.infinity,
       decoration: BoxDecoration(
         color: AppColors.secondary,

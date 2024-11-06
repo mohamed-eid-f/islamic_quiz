@@ -5,11 +5,12 @@ import "package:islamic_quiz/core/colors/app_colors.dart";
 import "package:islamic_quiz/features/quiz/presentation/views/quiz_view.dart";
 
 class EndView extends StatelessWidget {
-  const EndView({super.key});
+  final int score;
+  const EndView({super.key, required this.score});
 
   @override
   Widget build(BuildContext context) {
-    log("END GAME");
+    // log("END GAME");
     return Scaffold(
       body: Center(
         child: Container(
@@ -23,20 +24,45 @@ class EndView extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: 200,
+                height: 250,
                 padding: const EdgeInsets.all(32.0),
                 child: Center(
-                  child: Text(
-                    "انتهى الاختبار",
-                    style: Theme.of(context).textTheme.displayLarge,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "انتهت المحاولة",
+                        style: Theme.of(context).textTheme.displayMedium,
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        "لقد حصلت على",
+                        style: Theme.of(context).textTheme.displayMedium,
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        "$score",
+                        style:
+                            Theme.of(context).textTheme.displayLarge!.copyWith(
+                                  fontSize: 50,
+                                ),
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        "نقطة",
+                        style: Theme.of(context).textTheme.displayMedium,
+                      ),
+                    ],
                   ),
                 ),
               ),
               const Divider(thickness: 5, color: AppColors.primary),
               const SizedBox(height: 16),
               Text(
-                "حاول الوصول إلى مستويات أعلى في المرة القادمة",
-                style: Theme.of(context).textTheme.displaySmall,
+                "حاول الوصول إلى مستويات أعلى في المحاولة القادمة للحصول على نقاط أكبر",
+                style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                      height: 2,
+                    ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 32),
@@ -56,7 +82,7 @@ class EndView extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      "اعادة الاختبار",
+                      "محاولة جديدة",
                       style:
                           Theme.of(context).textTheme.displayMedium!.copyWith(
                                 color: AppColors.secondary,

@@ -1,11 +1,12 @@
-import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:islamic_quiz/core/colors/app_colors.dart";
-import "package:islamic_quiz/features/end/presentation/end_view.dart";
+import "package:islamic_quiz/features/end/presentation/view_model/end_provider.dart";
 import "package:islamic_quiz/features/quiz/presentation/view_model/answer_provider.dart";
 import "package:islamic_quiz/features/quiz/presentation/view_model/question_provider.dart";
 import "package:islamic_quiz/features/quiz/presentation/view_model/quiz_provider.dart";
+import "package:islamic_quiz/features/score/presentation/model_view/score_provider/score_provider.dart";
+import "package:islamic_quiz/features/timer/presentation/view_model/timer_provider.dart";
 
 class AnswerWidget extends ConsumerWidget {
   const AnswerWidget({
@@ -19,30 +20,43 @@ class AnswerWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    DateTime currentBackPressTime = DateTime.now();
     Color buttonBackground = ref.watch(answerProvider(index));
-
+    final quizIndexP = ref.read(quizIndexProvider.notifier);
     return InkWell(
       onTap: () async {
+        DateTime now = DateTime.now();
+        if (now.difference(currentBackPressTime) < const Duration(seconds: 2)) {
+          // double tapped
+          return;
+        }
+        currentBackPressTime = now;
         // check the answer and
         bool isCorrect =
             ref.read(questionsProvider.notifier).checkAnswer(index);
         if (isCorrect) {
           ref.read(answerProvider(index).notifier).showCorrectAnswer();
           // wait for 2 seconds then go to the next question
-          await Future.delayed(const Duration(seconds: 2)).then((_) {
-            ref.read(quizIndexProvider.notifier).nextQuestion();
+          await Future.delayed(const Duration(seconds: 1)).then((_) {
+            quizIndexP.nextQuestion();
           });
+
           // todo: update the score
+          final timerState = ref.watch(timerProvider);
+          int? score = timerState.asData?.value.duration;
+          if (score != null) {
+            ref.read(scoreProvider.notifier).addScore(score);
+          }
         } else {
           // todo: show the correct answer
           // show the wrong answer animation
           ref.read(answerProvider(index).notifier).showWrongAnswer();
           // wait for 2 seconds
-          await Future.delayed(const Duration(seconds: 2));
-          // end game
-          Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (context) => const EndView(),
-          ));
+          await Future.delayed(const Duration(seconds: 2), () {
+            int score = ref.read(scoreProvider);
+            // end game
+            endGame(score);
+          });
         }
       },
       child: Container(

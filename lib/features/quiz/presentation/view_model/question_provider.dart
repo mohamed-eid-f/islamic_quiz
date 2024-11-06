@@ -2,7 +2,6 @@ import "dart:convert";
 
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:islamic_quiz/core/colors/app_colors.dart";
 import "package:islamic_quiz/features/quiz/data/model/question_model.dart";
 import "package:islamic_quiz/features/quiz/presentation/view_model/quiz_provider.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
@@ -13,6 +12,9 @@ part "question_provider.g.dart";
 class Questions extends _$Questions {
   @override
   FutureOr<QuestionModel> build() {
+    ref.onDispose(() {
+      debugPrint("question provider disposed");
+    });
     return getQuestion();
   }
 

@@ -10,7 +10,6 @@ class TimerValue extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final timerState = ref.watch(timerProvider);
-    log(timerState.toString()); // for debugging purposes only
     return timerState.maybeWhen(
       data: (value) => Text(
         formatTimer(value.duration),
