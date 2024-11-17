@@ -1,8 +1,6 @@
-import "dart:developer";
-
 import "package:flutter/material.dart";
 import "package:islamic_quiz/core/colors/app_colors.dart";
-import "package:islamic_quiz/features/quiz/presentation/views/quiz_view.dart";
+import "package:islamic_quiz/features/home/presentation/view/home_view.dart";
 
 class EndView extends StatelessWidget {
   final int score;
@@ -10,7 +8,6 @@ class EndView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // log("END GAME");
     return Scaffold(
       body: Center(
         child: Container(
@@ -70,7 +67,7 @@ class EndView extends StatelessWidget {
               InkWell(
                 onTap: () {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const QuizView(),
+                    builder: (context) => const HomeView(),
                   ));
                 },
                 child: Container(

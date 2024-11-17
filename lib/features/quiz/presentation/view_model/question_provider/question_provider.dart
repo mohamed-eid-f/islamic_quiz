@@ -3,7 +3,7 @@ import "dart:convert";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:islamic_quiz/features/quiz/data/model/question_model.dart";
-import "package:islamic_quiz/features/quiz/presentation/view_model/quiz_provider.dart";
+import "package:islamic_quiz/features/quiz/presentation/view_model/quiz_provider/quiz_provider.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 part "question_provider.g.dart";
@@ -33,7 +33,7 @@ class Questions extends _$Questions {
     // get question according to levelProvider counter
     QuestionModel question =
         questionModels.firstWhere((q) => q.level == levelProvider);
-    debugPrint(question.toString());
+    await Future.delayed(const Duration(seconds: 5));
     return question;
   }
 

@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:islamic_quiz/core/colors/app_colors.dart";
 import "package:islamic_quiz/features/quiz/data/model/question_model.dart";
-import "package:islamic_quiz/features/quiz/presentation/view_model/question_provider.dart";
+import "package:islamic_quiz/features/quiz/presentation/view_model/question_provider/question_provider.dart";
 
 class Progress extends ConsumerWidget {
   const Progress({

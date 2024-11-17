@@ -46,6 +46,8 @@ dependencies:
   loader_overlay:
   flutter_spinkit:
   flutter_screenutil:
+  font_awesome_flutter: ^10.8.0
+  iconic: ^0.0.3
 
 dev_dependencies:
   flutter_test:
@@ -105,6 +107,9 @@ flutter:
         - asset: assets/fonts/Alexandria-Regular.ttf
         - asset: assets/fonts/Alexandria-Bold.ttf
           weight: 700
+    - family: Hacen
+      fonts:
+        - asset: assets/fonts/Hacen-Saudi-Arabia.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

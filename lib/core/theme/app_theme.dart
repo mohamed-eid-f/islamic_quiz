@@ -69,10 +69,10 @@ var appThemeData = ThemeData(
     displayLarge: TextStyle(
       color: AppColors.fontColor,
       fontSize: 24,
-      fontFamily: "Alexandria",
+      fontFamily: "Hacen",
       wordSpacing: 2,
-      height: 1.3,
-      fontWeight: FontWeight.bold,
+      height: 2,
+      // fontWeight: FontWeight.bold,
     ),
     displayMedium: TextStyle(
       color: AppColors.fontColor,

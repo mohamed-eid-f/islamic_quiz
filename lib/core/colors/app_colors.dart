@@ -1,8 +1,9 @@
 import "package:flutter/material.dart";
 
 class AppColors {
-  static const Color primary = Color(0xFF3f58b2);
-  static const Color secondary = Color(0xFFf7f7f7);
+  static const Color primary = Color.fromARGB(255, 28, 162, 153);
+  static const Color secondary = Color.fromRGBO(247, 247, 247, 1);
+  static const Color primaryLight = Color.fromARGB(255, 130, 222, 216);
   static const Color green = Colors.green;
   static const Color red = Colors.red;
   static const Color timerBackground = Colors.amber;

@@ -1,11 +1,13 @@
+import "package:flutter/services.dart";
+
 import "package:flutter/material.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:islamic_quiz/app_localizations.dart";
 import "package:islamic_quiz/features/quiz/data/model/question_model.dart";
-import "package:islamic_quiz/features/quiz/presentation/views/quiz_view.dart";
 import "package:flutter_screenutil/flutter_screenutil.dart";
+import "package:islamic_quiz/features/splash/presentation/views/splash_view.dart";
 import "core/theme/app_theme.dart";
 
 void main() async {
@@ -30,6 +32,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       locale: const Locale("ar"),
@@ -46,7 +49,7 @@ class MyApp extends StatelessWidget {
       title: "Islamic Quiz",
       theme: appThemeData,
       navigatorKey: navigatorKey,
-      home: const QuizView(),
+      home: const SplashView(),
     );
   }
 }
