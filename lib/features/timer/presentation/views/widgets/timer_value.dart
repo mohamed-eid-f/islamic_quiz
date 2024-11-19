@@ -10,7 +10,15 @@ class TimerValue extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final timerState = ref.watch(timerProvider);
+    double width = MediaQuery.of(context).size.width;
     return timerState.maybeWhen(
+      //   data: (value) => AnimatedContainer(
+      //     duration: const Duration(seconds: 20),
+      //     height: 10,
+      //     color: Colors.black,
+      //     curve: Curves.linear,
+      //     width: value.duration.toDouble() * ((width - 32) / 20),
+      // ),
       data: (value) => Text(
         formatTimer(value.duration),
         style: Theme.of(context).textTheme.displayMedium,

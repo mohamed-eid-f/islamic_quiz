@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:islamic_quiz/core/colors/app_colors.dart";
-import "package:islamic_quiz/features/end/presentation/view_model/end_provider.dart";
+import "package:islamic_quiz/features/end/view_model/end_provider.dart";
 import "package:islamic_quiz/features/quiz/presentation/view_model/answer_provider/answer_provider.dart";
 import "package:islamic_quiz/features/quiz/presentation/view_model/question_provider/question_provider.dart";
 import "package:islamic_quiz/features/quiz/presentation/view_model/quiz_provider/quiz_provider.dart";
@@ -54,6 +54,8 @@ class AnswerWidget extends ConsumerWidget {
           // wait for 2 seconds
           await Future.delayed(const Duration(seconds: 2), () {
             int score = ref.read(scoreProvider);
+            // add score to the high scores
+
             // end game
             endGame(score);
           });

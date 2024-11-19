@@ -10,6 +10,8 @@ class TimerWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
+        height: 48,
+        width: double.infinity,
         decoration: BoxDecoration(
           color: AppColors.timerBackground,
           boxShadow: [
@@ -26,8 +28,6 @@ class TimerWidget extends ConsumerWidget {
             ),
           ],
         ),
-        height: 48,
-        width: 96,
         child: const Center(
           child: TimerValue(),
         ));

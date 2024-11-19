@@ -33,7 +33,8 @@ class Questions extends _$Questions {
     // get question according to levelProvider counter
     QuestionModel question =
         questionModels.firstWhere((q) => q.level == levelProvider);
-    await Future.delayed(const Duration(seconds: 5));
+    // await Future.delayed(const Duration(seconds: 2));
+    // print("question: ${question.question}");
     return question;
   }
 

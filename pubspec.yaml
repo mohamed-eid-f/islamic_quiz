@@ -48,6 +48,7 @@ dependencies:
   flutter_screenutil:
   font_awesome_flutter: ^10.8.0
   iconic: ^0.0.3
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:
@@ -110,6 +111,18 @@ flutter:
     - family: Hacen
       fonts:
         - asset: assets/fonts/Hacen-Saudi-Arabia.ttf
+    - family: Meila
+      fonts:
+        - asset: assets/fonts/MeilaArabic-LineLight.ttf
+    - family: Naveid
+      fonts:
+        - asset: assets/fonts/NaveidArabicDEMO-Thin.otf
+        - asset: assets/fonts/NaveidArabicDEMO-Bold.otf
+          weight: 700
+    - family: Tufuli
+      fonts:
+        - asset: assets/fonts/TufuliArabicDEMO-Bold.otf
+          weight: 700
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

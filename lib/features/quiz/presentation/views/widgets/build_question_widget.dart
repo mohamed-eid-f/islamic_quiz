@@ -18,7 +18,6 @@ class BuildQuestion extends ConsumerWidget {
     Future.delayed(Duration.zero, () {
       ref.read(timerProvider.notifier).startTimer();
     });
-
     return Container(
       height: 520,
       margin: const EdgeInsets.all(16),

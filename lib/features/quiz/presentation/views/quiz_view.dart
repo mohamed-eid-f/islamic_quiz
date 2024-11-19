@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
-import "package:islamic_quiz/features/quiz/presentation/views/widgets/progress_widget.dart";
 import "package:islamic_quiz/features/quiz/presentation/views/widgets/question_widget.dart";
 import "package:islamic_quiz/features/quiz/presentation/views/widgets/score_widget.dart";
 import "package:islamic_quiz/features/quiz/presentation/views/widgets/timer.dart";
@@ -13,18 +12,20 @@ class QuizView extends ConsumerWidget {
     // int index = ref.watch(quizIndexProvider);
 
     return const Scaffold(
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(height: 50),
-          ScoreWidget(),
-          SizedBox(height: 32),
-          TimerWidget(),
-          SizedBox(height: 32),
-          Progress(),
-          SizedBox(height: 32),
-          QuestionWidget(),
-        ],
+      body: Center(
+        child: Column(
+          // mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(height: 50),
+            ScoreWidget(),
+            SizedBox(height: 32),
+            TimerWidget(),
+            SizedBox(height: 32),
+            // Progress(),
+            SizedBox(height: 32),
+            QuestionWidget(),
+          ],
+        ),
       ),
     );
   }

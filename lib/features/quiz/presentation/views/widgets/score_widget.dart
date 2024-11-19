@@ -13,12 +13,22 @@ class ScoreWidget extends ConsumerWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
-          "$score",
-          style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                color: Colors.white,
-              ),
+        TweenAnimationBuilder(
+          duration: const Duration(seconds: 1),
+          tween: IntTween(begin: 0, end: score),
+          builder: (context, value, child) => Text(
+            "$value",
+            style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                  color: Colors.white,
+                ),
+          ),
         ),
+        // Text(
+        //   "$score",
+        //   style: Theme.of(context).textTheme.displayLarge!.copyWith(
+        //         color: Colors.white,
+        //       ),
+        // ),
         const SizedBox(width: 8),
         const Icon(
           Icons.star,

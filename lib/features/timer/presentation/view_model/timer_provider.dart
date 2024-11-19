@@ -1,13 +1,9 @@
 import "dart:async";
-import "dart:developer";
 
-import "package:flutter/material.dart";
-import "package:islamic_quiz/features/end/presentation/end_view.dart";
-import "package:islamic_quiz/features/end/presentation/view_model/end_provider.dart";
+import "package:islamic_quiz/features/end/view_model/end_provider.dart";
 import "package:islamic_quiz/features/score/presentation/model_view/score_provider/score_provider.dart";
 import "package:islamic_quiz/features/timer/presentation/view_model/ticker.dart";
 import "package:islamic_quiz/features/timer/presentation/view_model/timer_state.dart";
-import "package:islamic_quiz/main.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 part "timer_provider.g.dart";

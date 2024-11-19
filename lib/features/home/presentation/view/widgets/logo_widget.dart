@@ -3,7 +3,9 @@ import "package:flutter/material.dart";
 class LogoWidget extends StatelessWidget {
   const LogoWidget({
     super.key,
+    this.size,
   });
+  final double? size;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,8 @@ class LogoWidget extends StatelessWidget {
         "اختبر معلوماتك\nالإسلامية",
         textAlign: TextAlign.center,
         style: Theme.of(context).textTheme.displayLarge!.copyWith(
-          fontSize: 40,
+          fontSize: size ?? 40,
+          // fontFamily: "Naveid",
           shadows: [
             const Shadow(
               offset: Offset(4, 4),
