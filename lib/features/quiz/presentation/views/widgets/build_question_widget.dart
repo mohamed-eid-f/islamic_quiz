@@ -19,13 +19,6 @@ class BuildQuestion extends ConsumerWidget {
       ref.read(timerProvider.notifier).startTimer();
     });
     return Container(
-      height: 520,
-      margin: const EdgeInsets.all(16),
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: AppColors.secondary,
-        borderRadius: BorderRadius.circular(16),
-      ),
       child: Column(
         children: [
           Container(
