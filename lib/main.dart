@@ -1,8 +1,11 @@
+import "dart:async";
+
 import "package:flutter/services.dart";
 
 import "package:flutter/material.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:google_mobile_ads/google_mobile_ads.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:islamic_quiz/app_localizations.dart";
 import "package:islamic_quiz/features/quiz/data/model/question_model.dart";
@@ -13,15 +16,16 @@ import "core/theme/app_theme.dart";
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox<QuestionModel>("questions");
+  WidgetsFlutterBinding.ensureInitialized();
+  unawaited(MobileAds.instance.initialize());
+
   await ScreenUtil.ensureScreenSize();
 
   // 1440 X 2560
   // flutter: 3.16.6
 
   runApp(
-    const ProviderScope(
-      child: MyApp(),
-    ),
+    const ProviderScope(child: MyApp()),
   );
 }
 

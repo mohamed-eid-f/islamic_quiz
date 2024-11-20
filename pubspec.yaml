@@ -49,6 +49,7 @@ dependencies:
   font_awesome_flutter: ^10.8.0
   iconic: ^0.0.3
   shared_preferences: ^2.2.3
+  google_mobile_ads: ^5.2.0
 
 dev_dependencies:
   flutter_test:
