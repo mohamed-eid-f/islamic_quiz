@@ -9,7 +9,7 @@ class LoadingView extends StatelessWidget {
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 4)).then((value) {
       Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (_) => const QuizView()));
+          .pushReplacement(MaterialPageRoute(builder: (_) => QuizView()));
     });
     return const Scaffold(
       body: BackgroundWidget(

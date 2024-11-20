@@ -6,7 +6,6 @@ import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:islamic_quiz/features/home/presentation/view/widgets/help_widget.dart";
 import "package:islamic_quiz/features/home/presentation/view/widgets/loading_view.dart";
 import "package:islamic_quiz/features/home/presentation/view/widgets/logo_widget.dart";
-import "package:islamic_quiz/features/quiz/presentation/views/quiz_view.dart";
 import "package:islamic_quiz/features/score/presentation/model_view/score_provider/score_provider.dart";
 import "package:islamic_quiz/features/score/presentation/views/high_score_view.dart";
 
