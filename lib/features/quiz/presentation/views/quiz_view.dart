@@ -1,5 +1,6 @@
 import "dart:io";
 
+import "package:flutter_screenutil/flutter_screenutil.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:islamic_quiz/features/quiz/presentation/views/widgets/question_widget.dart";
@@ -7,13 +8,46 @@ import "package:islamic_quiz/features/quiz/presentation/views/widgets/score_widg
 import "package:islamic_quiz/features/quiz/presentation/views/widgets/timer.dart";
 import "package:google_mobile_ads/google_mobile_ads.dart";
 
-class QuizView extends ConsumerStatefulWidget {
-  /// The requested size of the banner. Defaults to [AdSize.banner].
-  final AdSize adSize;
+class QuizView extends StatelessWidget {
+  const QuizView({super.key});
 
-  /// The AdMob ad unit to show.
-  ///
-  /// TODO: replace this test ad unit with your own ad unit
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          // mainAxisSize: MainAxisSize.min,
+          children: [
+            50.verticalSpace,
+            ScoreWidget(),
+            32.verticalSpace,
+            TimerWidget(),
+            32.verticalSpace,
+            // Progress(),
+            Expanded(child: QuestionWidget()),
+            AdmobBannerWidget(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class AdmobBannerWidget extends StatefulWidget {
+  const AdmobBannerWidget({
+    super.key,
+  });
+
+  /// The requested size of the banner. Defaults to [AdSize.banner].
+
+  @override
+  State<AdmobBannerWidget> createState() => _AdmobBannerWidgetState();
+}
+
+class _AdmobBannerWidgetState extends State<AdmobBannerWidget> {
+  late AdSize adSize;
+  BannerAd? _bannerAd;
+
   final String adUnitId = Platform.isAndroid
       // Use this ad unit on Android...
 
@@ -21,50 +55,11 @@ class QuizView extends ConsumerStatefulWidget {
       // ? "ca-app-pub-2750684500976687/7002601664" // original
       // ... or this one on iOS.
       : "ca-app-pub-xxxxxxxxxxxxxxxx/xxxxxxxxxx";
-  QuizView({
-    super.key,
-    this.adSize = AdSize.banner,
-  });
-  @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _QuizViewState();
-}
-
-class _QuizViewState extends ConsumerState<QuizView> {
-  BannerAd? _bannerAd;
-  @override
-  Widget build(BuildContext context) {
-    /// The banner ad to show. This is `null` until the ad is actually loaded.
-    return Scaffold(
-      body: Center(
-        child: Column(
-          // mainAxisSize: MainAxisSize.min,
-          children: [
-            SizedBox(height: 50),
-            ScoreWidget(),
-            SizedBox(height: 32),
-            TimerWidget(),
-            SizedBox(height: 32),
-            // Progress(),
-            SizedBox(height: 32),
-            QuestionWidget(),
-            SizedBox(
-              width: widget.adSize.width.toDouble(),
-              height: widget.adSize.height.toDouble(),
-              child: _bannerAd == null
-                  // Nothing to render yet.
-                  ? SizedBox()
-                  // The actual ad.
-                  : AdWidget(ad: _bannerAd!),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
   @override
   void initState() {
     super.initState();
+    adSize = AdSize.banner;
     _loadAd();
   }
 
@@ -74,11 +69,23 @@ class _QuizViewState extends ConsumerState<QuizView> {
     super.dispose();
   }
 
-  /// Loads a banner ad.
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: adSize.width.toDouble(),
+      height: adSize.height.toDouble(),
+      child: _bannerAd == null
+          // Nothing to render yet.
+          ? SizedBox()
+          // The actual ad.
+          : AdWidget(ad: _bannerAd!),
+    );
+  }
+
   void _loadAd() {
-    final bannerAd = BannerAd(
-      size: widget.adSize,
-      adUnitId: widget.adUnitId,
+    _bannerAd = BannerAd(
+      size: adSize,
+      adUnitId: adUnitId,
       request: const AdRequest(),
       listener: BannerAdListener(
         // Called when an ad is successfully received.
@@ -100,6 +107,6 @@ class _QuizViewState extends ConsumerState<QuizView> {
     );
 
     // Start loading.
-    bannerAd.load();
+    _bannerAd!.load();
   }
 }

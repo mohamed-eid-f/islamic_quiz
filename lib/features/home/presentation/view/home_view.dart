@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:flutter_screenutil/flutter_screenutil.dart";
 import "package:islamic_quiz/features/home/presentation/view/widgets/background_widget.dart";
 import "package:islamic_quiz/features/home/presentation/view/widgets/circle_button_widget.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
@@ -35,7 +36,7 @@ class HomeView extends StatelessWidget {
                 flex: 4,
                 child: CircleButtonWidget(
                   icon: FontAwesomeIcons.play,
-                  radius: 80,
+                  radius: 60.r,
                   onTap: () {
                     Navigator.pushReplacement(
                       context,

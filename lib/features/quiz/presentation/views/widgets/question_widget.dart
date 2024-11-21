@@ -6,6 +6,8 @@ import "package:islamic_quiz/features/quiz/presentation/views/widgets/build_ques
 import "package:islamic_quiz/features/timer/presentation/view_model/timer_provider.dart";
 import "package:islamic_quiz/core/colors/app_colors.dart";
 
+import "package:flutter_screenutil/flutter_screenutil.dart";
+
 class QuestionWidget extends ConsumerWidget {
   const QuestionWidget({
     super.key,
@@ -17,12 +19,12 @@ class QuestionWidget extends ConsumerWidget {
     ref.invalidate(timerProvider);
 
     return Container(
-      height: 520,
-      margin: const EdgeInsets.all(16),
+      // height: 420.h,
+      margin: const EdgeInsets.all(16).r,
       width: double.infinity,
       decoration: BoxDecoration(
         color: AppColors.secondary,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(16).r,
       ),
       child: question.maybeWhen(
         data: (data) {

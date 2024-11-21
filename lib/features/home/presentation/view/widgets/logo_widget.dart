@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter_screenutil/flutter_screenutil.dart";
 
 class LogoWidget extends StatelessWidget {
   const LogoWidget({
@@ -14,16 +15,16 @@ class LogoWidget extends StatelessWidget {
         "اختبر معلوماتك\nالإسلامية",
         textAlign: TextAlign.center,
         style: Theme.of(context).textTheme.displayLarge!.copyWith(
-          fontSize: size ?? 40,
+          fontSize: size ?? 40.r,
           // fontFamily: "Naveid",
           shadows: [
-            const Shadow(
-              offset: Offset(4, 4),
+            Shadow(
+              offset: Offset(4.r, 4.r),
               color: Colors.grey,
               blurRadius: 10,
             ),
-            const Shadow(
-              offset: Offset(2, 2),
+            Shadow(
+              offset: Offset(2.r, 2.r),
               color: Colors.white,
             ),
           ],

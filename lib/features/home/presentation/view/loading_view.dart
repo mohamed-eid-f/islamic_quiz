@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import "package:islamic_quiz/features/home/presentation/view/widgets/background_widget.dart";
 import "package:islamic_quiz/features/quiz/presentation/views/quiz_view.dart";
 
+import "package:flutter_screenutil/flutter_screenutil.dart";
+
 class LoadingView extends StatelessWidget {
   const LoadingView({super.key});
 
@@ -31,9 +33,9 @@ class LoadingBar extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          margin: const EdgeInsets.all(16.0),
+          margin: const EdgeInsets.all(16.0).r,
           width: double.infinity,
-          height: 10,
+          height: 10.r,
           color: Colors.white,
         ),
         TweenAnimationBuilder(
@@ -42,9 +44,9 @@ class LoadingBar extends StatelessWidget {
           duration: const Duration(seconds: 5),
           builder: (context, value, child) {
             return Container(
-              margin: const EdgeInsets.all(16.0),
-              width: value * (width - 32),
-              height: 10,
+              margin: const EdgeInsets.all(16.0).r,
+              width: value * (width - 32.r),
+              height: 10.r,
               color: Colors.blue,
             );
           },

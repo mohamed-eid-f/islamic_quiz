@@ -3,6 +3,8 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:islamic_quiz/core/colors/app_colors.dart";
 import "package:islamic_quiz/features/timer/presentation/views/widgets/timer_value.dart";
 
+import "package:flutter_screenutil/flutter_screenutil.dart";
+
 class TimerWidget extends ConsumerWidget {
   const TimerWidget({
     super.key,
@@ -17,14 +19,14 @@ class TimerWidget extends ConsumerWidget {
           boxShadow: [
             BoxShadow(
               color: Colors.amber[200]!,
-              blurRadius: 8,
-              spreadRadius: 8,
-              offset: const Offset(0, 0),
+              blurRadius: 8.r,
+              spreadRadius: 8.r,
+              offset: Offset(0.r, 0.r),
             ),
-            const BoxShadow(
+            BoxShadow(
               color: Colors.amber,
-              blurRadius: 8,
-              offset: Offset(4, 4),
+              blurRadius: 8.r,
+              offset: Offset(4.r, 4.r),
             ),
           ],
         ),

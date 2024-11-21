@@ -1,6 +1,7 @@
 import "dart:io";
 import "dart:math";
 
+import "package:flutter_screenutil/flutter_screenutil.dart";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
@@ -113,12 +114,12 @@ class _EndViewState extends ConsumerState<EndView> {
       body: BackgroundWidget(
         child: Center(
           child: Container(
-            margin: const EdgeInsets.all(16.0),
+            margin: const EdgeInsets.all(16.0).r,
             height: MediaQuery.of(context).size.height,
             width: double.infinity,
             decoration: BoxDecoration(
               // color: AppColors.secondary,
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(16).r,
             ),
             child: Column(
               // mainAxisSize: MainAxisSize.min,
@@ -126,7 +127,7 @@ class _EndViewState extends ConsumerState<EndView> {
               children: [
                 Container(
                   // height: 300,
-                  padding: const EdgeInsets.all(32.0),
+                  padding: const EdgeInsets.all(32.0).r,
                   child: Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -138,10 +139,10 @@ class _EndViewState extends ConsumerState<EndView> {
                               .displayMedium!
                               .copyWith(
                                 fontFamily: "Naveid",
-                                fontSize: 32,
+                                fontSize: 32.sp,
                               ),
                         ),
-                        const SizedBox(height: 16),
+                        16.verticalSpace,
                         Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -151,10 +152,10 @@ class _EndViewState extends ConsumerState<EndView> {
                                   .textTheme
                                   .displayLarge!
                                   .copyWith(
-                                    fontSize: 50,
+                                    fontSize: 50.sp,
                                   ),
                             ),
-                            const SizedBox(width: 16),
+                            16.horizontalSpace,
                             Text(
                               "نقطة",
                               style: Theme.of(context).textTheme.displayMedium,
@@ -165,20 +166,22 @@ class _EndViewState extends ConsumerState<EndView> {
                     ),
                   ),
                 ),
-                const Divider(thickness: 5, color: AppColors.primary),
-                const SizedBox(height: 16),
+                Divider(thickness: 5.r, color: AppColors.primary),
+
+                16.verticalSpace,
                 _showSucessMessage(context),
-                const SizedBox(height: 16),
+                16.verticalSpace,
+
                 const Divider(thickness: 5, color: AppColors.primary),
-                const SizedBox(height: 16),
+                16.verticalSpace,
                 Text(
                   endMessage[4],
                   style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                        height: 2,
+                        height: 2.r,
                       ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 32),
+                32.verticalSpace,
                 // Re game Button(),
                 Center(
                   child: CircleButtonWidget(
@@ -188,7 +191,7 @@ class _EndViewState extends ConsumerState<EndView> {
                       ));
                     },
                     icon: FontAwesomeIcons.repeat,
-                    radius: 60,
+                    radius: 50.r,
                   ),
                 ),
               ],
@@ -204,8 +207,8 @@ class _EndViewState extends ConsumerState<EndView> {
       success_messages[random],
       textAlign: TextAlign.center,
       style: Theme.of(context).textTheme.displayMedium!.copyWith(
-            height: 2,
-            fontSize: 24,
+            height: 2.r,
+            fontSize: 24.sp,
           ),
     );
   }

@@ -13,6 +13,8 @@ import "package:islamic_quiz/features/quiz/presentation/view_model/quiz_provider
 import "package:islamic_quiz/features/score/presentation/model_view/score_provider/score_provider.dart";
 import "package:islamic_quiz/features/timer/presentation/view_model/timer_provider.dart";
 
+import "package:flutter_screenutil/flutter_screenutil.dart";
+
 class AnswerWidget extends ConsumerWidget {
   const AnswerWidget({
     super.key,
@@ -79,15 +81,15 @@ class AnswerWidget extends ConsumerWidget {
         }
       },
       child: Container(
-        height: 60,
+        height: 60.r,
         decoration: BoxDecoration(
           color: buttonBackground,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(8).r,
         ),
         margin: const EdgeInsets.symmetric(
           horizontal: 32.0,
           vertical: 4,
-        ),
+        ).r,
         child: Center(
           child: Text(
             text,
@@ -111,7 +113,7 @@ class SuccessMessageWidget extends StatelessWidget {
     int random = Random().nextInt(success_words.length);
     return AlertDialog(
       title: SizedBox(
-        height: 100,
+        height: 100.r,
         child: Center(
           child: Text(
             success_words[random],

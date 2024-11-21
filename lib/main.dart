@@ -20,7 +20,10 @@ void main() async {
   unawaited(MobileAds.instance.initialize());
 
   await ScreenUtil.ensureScreenSize();
-
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    // DeviceOrientation.portraitDown
+  ]);
   // 1440 X 2560
   // flutter: 3.16.6
 
@@ -37,23 +40,33 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      locale: const Locale("ar"),
-      supportedLocales: const [
-        Locale("en"),
-        Locale("ar"),
-      ],
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      title: "Islamic Quiz",
-      theme: appThemeData,
-      navigatorKey: navigatorKey,
-      home: const SplashView(),
+    return ScreenUtilInit(
+      designSize:
+          const Size(375, 812), // Adjusted design size for better scaling
+      minTextAdapt: true, // Ensures text adapts to screen size
+      splitScreenMode:
+          true, // Enables split screen mode for better performance on tablets
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          locale: const Locale("ar"),
+          supportedLocales: const [
+            Locale("en"),
+            Locale("ar"),
+          ],
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          title: "Islamic Quiz",
+          theme: appThemeData,
+          navigatorKey: navigatorKey,
+          home: child,
+        );
+      },
+      child: const SplashView(),
     );
   }
 }
