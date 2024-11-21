@@ -16,7 +16,9 @@ class QuizView extends ConsumerStatefulWidget {
   /// TODO: replace this test ad unit with your own ad unit
   final String adUnitId = Platform.isAndroid
       // Use this ad unit on Android...
-      ? "ca-app-pub-2750684500976687/7002601664"
+
+      ? "ca-app-pub-3940256099942544/9214589741" // test
+      // ? "ca-app-pub-2750684500976687/7002601664" // original
       // ... or this one on iOS.
       : "ca-app-pub-xxxxxxxxxxxxxxxx/xxxxxxxxxx";
   QuizView({
